@@ -10,6 +10,12 @@ Classes:
     - ManagementSystem: Provides functionality to manage employees, projects, and tasks.
 """
 
+
+from employee import Employee
+from project import Project
+from task import Task
+
+
 class ManagementSystem:
     """
     Class representing a management system for employees, projects, and tasks in the company.
@@ -19,12 +25,18 @@ class ManagementSystem:
         projects (list): List of projects in the system.
         tasks (list): List of tasks in the system.
     """
+    employees = Employee[10]
+    projects = Project[10]
+    tasks = Task[10]
+
 
     def __init__(self):
         """
         Initialize a ManagementSystem object.
         """
-        pass
+        management_system = ManagementSystem()
+
+        
 
     def add_employee(self, employee):
         """
@@ -33,7 +45,7 @@ class ManagementSystem:
         Args:
             employee (Employee): The employee to be added.
         """
-        pass
+        self.employees.append(employee)
 
     def remove_employee(self, emp_id):
         """
@@ -42,7 +54,12 @@ class ManagementSystem:
         Args:
             emp_id (str): The ID of the employee to be removed.
         """
-        pass
+        i = 0
+        for employee in self.employees:
+            i += 1
+            if employee.emp_id:
+                del self.employees[i]
+
 
     def add_project(self, project):
         """
@@ -51,7 +68,7 @@ class ManagementSystem:
         Args:
             project (Project): The project to be added.
         """
-        pass
+        self.projects.append(project)
 
     def add_task(self, task):
         """
@@ -60,7 +77,7 @@ class ManagementSystem:
         Args:
             task (Task): The task to be added.
         """
-        pass
+        self.tasks.append(task)
 
     def assign_employee_to_project(self, emp_id, project_id):
         """
@@ -73,4 +90,5 @@ class ManagementSystem:
         Raises:
             ValueError: If employee or project is not found.
         """
-        pass
+        self.projects.assign_employee()
+
