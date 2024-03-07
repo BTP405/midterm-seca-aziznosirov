@@ -4,6 +4,8 @@ Module: management_system.py
 This module contains classes for managing employees, projects, and tasks in a fictional company.
 """
 
+from project import Project
+
 class Task:
     """
     Class representing a task in the company.
@@ -16,6 +18,12 @@ class Task:
         project (Project): The project associated with the task.
     """
 
+    task_id: str
+    description: str
+    deadline: str
+    status: str
+    project: Project[10]
+
     def __init__(self, task_id, description, deadline, status, project):
         """
         Initialize a Task object.
@@ -27,4 +35,8 @@ class Task:
             status (str): The status of the task.
             project (Project): The project associated with the task.
         """
-        pass
+        self.task_id = task_id
+        self.description = description
+        self.deadline  = deadline
+        self.status = status
+        self.project = project
